@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.mp4
+dream_run/
+dream_run.log
+!media/demo.mp4
+.DS_Store

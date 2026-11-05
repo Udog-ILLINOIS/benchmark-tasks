@@ -1,0 +1,28 @@
+[project]
+name = "carry-a-board-together"
+version = "0.1.0"
+description = "A YAM arm carries a board with a second YAM arm that leads, keeping its end level and setting it into two cradles."
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "mjlab==1.6.0",
+  "torch==2.14.0",
+  "pillow>=10",
+  "mediapy>=1.2",
+]
+
+[project.optional-dependencies]
+# Only for running Dream-1 on the task (dream_run.py).
+dream = ["dreamlabs-client==1.0.0"]
+
+[tool.uv]
+package = false
+
+# CUDA 13 torch on Linux (the default PyPI wheel carries an older CUDA); the default wheel elsewhere, such as macOS.
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu130", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "carry-a-board-together"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
